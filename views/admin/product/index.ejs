@@ -1,0 +1,130 @@
+        <% include ../layout/header.ejs %> 
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h1 class="page-header"> Danh sách sản phẩm</h1>
+                </div>
+                <div class="col-lg-4">
+                    <h1 class="page-header">
+                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modelId">
+                            Add
+                        </button>
+                    </h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <% if(success_msg != ''){ %> 
+                    <div class="alert alert-success"><%= success_msg%></div>
+                <% } %>
+                <% if(error_msg1='') { %>
+                    <div class="alert alert-danger"><%= error_msg %>  </div>
+                <% };%>
+                <!-- /.col-lg-6 -->
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Basic Table
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>STT</th>
+                                            <th> Hình đại diện</th>
+                                            <th>Tên sản phẩm</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% let i=1; listPro.forEach(element => { %>
+                                            <tr>
+                                                <td><%= i %> </td>
+                                                <td>
+                                                    <img src="/upload/<%= element.img_url[1] %>" alt="Smiley face" height="42" width="42"> 
+                                                </td>
+                                                <td><%= element.name %> </td>
+                                                <td>
+                                                    <a class="btn btn-primary btn-xs" href="/admin/product/update/<%= element._id %>" role="button">Update</a>
+                                                    <a class="btn btn-danger btn-xs" href="/admin/product/delete/<%= element._id %>" role="button">Delete</a>
+                                                </td>
+                                            </tr>
+                                        <% i++; }) %>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-6 -->
+            </div>
+        </div>
+        <!-- /#page-wrapper -->
+        <!-- Button trigger modal -->
+        
+        <!-- Modal -->
+        <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                           </button>
+                            <h5 class="modal-title"> Thêm mới sản phẩm</h5>
+                        </div>
+                    <form role="form" method="POST" enctype="multipart/form-data">
+                        <div class="modal-body">
+                            <div class="container-fluid">
+                                <div class="form-group">
+                                    <label>Tên sản phẩm: </label>
+                                    <input type="text" class="form-control" name="name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="description"> Mô tả: </label>
+                                    <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="price"> Nhập giá: </label>
+                                    <input type="number" class="form-control" name="price">
+                                </div>
+                                <select class="form-control" name="description">
+                                    <option>Chuyên mục</option>
+                                    <% cate.forEach(element => { %>
+                                        <option value="<%= element._id %>"><%= element.title %> </option>
+                                    <% }) %>
+                                    
+                                </select>
+                                <div class="form-group">
+                                    <div class="custom-file">
+                                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                        <input type="file" class="custom-file-input" id="inputGroupFile01" name="img_url_prod" multiple>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button class="btn btn-primary"> Add</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            $('#exampleModal').on('show.bs.modal', event => {
+                var button = $(event.relatedTarget);
+                var modal = $(this);
+                // Use above variables to manipulate the DOM
+                
+            });
+        </script>
+
+        <% include ../layout/footer.ejs %> 
