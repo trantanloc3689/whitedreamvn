@@ -20,7 +20,7 @@ global.Order = require('./model/Order');
 
 
 var index = require('./routes/index');
-var api = require('./routes/api');
+var api = require('./routes/api/api');
 var admin = require('./routes/admin');
 var product = require('./routes/product');
 var category = require('./routes/category');

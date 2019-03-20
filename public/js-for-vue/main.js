@@ -22,7 +22,7 @@ var app = new Vue({
 	methods:{
 		fetchAllProduct: function(){
             var app = this;
-            axios.get('http://localhost:3000/api/')
+            axios.get('http://localhost:3000/api/products')
                 .then(function (response) {
                     app.products = response.data;
                 })
@@ -43,38 +43,43 @@ var app = new Vue({
             const time = Date.now()
             const bookedProduct = {
                 id : String(time),
-                imgURL :this.products[this.indexViewProduct].imgURL,
+                img_url :this.products[this.indexViewProduct].img_url[0],
                	name : this.products[this.indexViewProduct].name,
                	price : this.products[this.indexViewProduct].price,
                	num : this.numProduct
 
             }
             this.bookedProducts.push(bookedProduct)
-            console.log(this.product)
+            this.saveBookedProducts()
             },
         removeBookedProduct: function (index) {
 	            if(confirm('Delete the product ?')){
 	                if(index!==-1){
                         this.bookedProducts.splice(index, 1)
 	                }
-	            }
+                }
+                this.saveBookedProducts()
 	        },
 	        increaseNum: function(){
                 this.numProduct = parseInt(this.numProduct) + 1
+                this.saveBookedProducts()
         },
             increaseNumC: function (index) {
                 this.bookedProducts[index].num += 1
                 console.log(this.bookedProducts[index].num)
+                this.saveBookedProducts()
             },
 	        decreaseNum: function(){
 	        	if(parseInt(this.numProduct)>1){
                     this.numProduct = parseInt(this.numProduct) - 1
+                    this.saveBookedProducts()
 	        	}
         },
             decreaseNumC: function (index) {
                 if (parseInt(this.numProduct) > 1) {
                     this.numProduct = parseInt(this.numProduct) - 1
                     this.bookedProducts[inndex].num = this.numProduct
+                    this.saveBookedProducts()
                 }
         },
         removeCart: function () {
@@ -90,9 +95,8 @@ var app = new Vue({
 	
 	watched:{
 		bookedProducts:{
-			handler:'saveBookedProducts',
+            handler:'saveBookedProducts',
 			deep : true
 		},
 	}
 })
-console.log(app.products);

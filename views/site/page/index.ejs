@@ -1,49 +1,10 @@
-﻿﻿<!DOCTYPE html>
-<html lang="en">
-<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+﻿﻿<% include ../layout/header.ejs %> 
 
-<head>
-    <title>Home</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="icon" type="image/png" href="/images/icons/favicon.png" />
 
-    <link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css">
-
-    <link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-
-    <link rel="stylesheet" type="text/css" href="/fonts/iconic/css/material-design-iconic-font.min.css">
-
-    <link rel="stylesheet" type="text/css" href="/fonts/linearicons-v1.0.0/icon-font.min.css">
-
-    <link rel="stylesheet" type="text/css" href="/vendor/animate/animate.css">
-
-    <link rel="stylesheet" type="text/css" href="/vendor/css-hamburgers/hamburgers.min.css">
-
-    <link rel="stylesheet" type="text/css" href="/vendor/animsition/css/animsition.min.css">
-
-    <link rel="stylesheet" type="text/css" href="/vendor/select2/select2.min.css">
-
-    <link rel="stylesheet" type="text/css" href="/vendor/daterangepicker/daterangepicker.css">
-
-    <link rel="stylesheet" type="text/css" href="/vendor/slick/slick.css">
-
-    <link rel="stylesheet" type="text/css" href="/vendor/MagnificPopup/magnific-popup.css">
-
-    <link rel="stylesheet" type="text/css" href="/vendor/perfect-scrollbar/perfect-scrollbar.css">
-
-    <link rel="stylesheet" type="text/css" href="/css/util.css">
-    <link rel="stylesheet" type="text/css" href="/css/main.css">
-
-</head>
-
-<body class="animsition">
-<div class="app">
+<div  v-if="products.length" class="app">
     <header>
-
         <div class="container-menu-desktop">
-
             <div class="top-bar">
                 <div class="content-topbar flex-sb-m h-full container">
                     <div class="left-top-bar">
@@ -62,22 +23,22 @@
                     <div class="menu-desktop">
                         <ul class="main-menu">
                             <li class="active-menu">
-                                <a href="index.html">Home</a>
+                                <a href="index">Home</a>
                             </li>
                             <li>
-                                <a href="product.html">Shop</a>
+                                <a href="shop">Shop</a>
                             </li>
                             <li class="label1" data-label1="hot">
-                                <a href="new-in.html">New in</a>
+                                <a href="new-in">New in</a>
                             </li>
                             <li>
-                                <a href="blog.html">Blog</a>
+                                <a href="blog">Blog</a>
                             </li>
                             <li>
-                                <a href="about.html">About</a>
+                                <a href="about">About</a>
                             </li>
                             <li>
-                                <a href="contact.html">Contact</a>
+                                <a href="contact">Contact</a>
                             </li>
                         </ul>
                     </div>
@@ -138,9 +99,9 @@
                         <li><a href="home-02.html">Homepage 2</a></li>
                         <li><a href="home-03.html">Homepage 3</a></li>
                     </ul>-->
-                    <span class="arrow-main-menu-m">
+                    <!--<span class="arrow-main-menu-m">
                         <i class="fa fa-angle-right" aria-hidden="true"></i>
-                    </span>
+                    </span>-->
                 </li>
                 <li>
                     <a href="product.html">Shop</a>
@@ -187,10 +148,10 @@
                 </div>
             </div>
             <div class="header-cart-content flex-w js-pscroll">
-                <!-- <ul class="header-cart-wrapitem w-full">
+                <ul class="header-cart-wrapitem w-full">
                     <li v-for="(bookedProduct,index) in bookedProducts" class="header-cart-item flex-w flex-t m-b-12">
                         <div class="header-cart-item-img">
-                            <img :src=bookedProduct.img_url[0] alt="IMG">
+                            <img :src="'./upload/'+bookedProduct.img_url" alt="IMG">
                             <span class="header-cart-item-img-after"><span class="lnr lnr-cross" @click="removeBookedProduct(index)"></span></span>
                         </div>
 
@@ -205,7 +166,7 @@
                     </li>
                     
                     
-                </ul> -->
+                </ul>
                 <div class="w-full">
                     <div class="header-cart-total w-full p-tb-40">
                         Total: ${{totalItem}}
@@ -220,10 +181,10 @@
         </div>
     </div>
 
-    <section class="section-slide">
+    <section class="section-slide section-slide-md section-slide-sm">
         <div class="wrap-slick1">
             <div class="slick1">
-                <div class="item-slick1" style="background-image: url(images/slide-01.jpg);">
+                <div class="item-slick1  section-slide-md section-slide-sm" style="background-image: url(images/slide-01.jpg);">
                     <div class="container h-full">
                         <div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
                             <div class="layer-slick1 animated visible-false" data-appear="fadeInDown" data-delay="0">
@@ -244,7 +205,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="item-slick1" style="background-image: url(images/slide-02.jpg);">
+                <div class="item-slick1  section-slide-md section-slide-sm" style="background-image: url(images/slide-02.jpg);">
                     <div class="container h-full">
                         <div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
                             <div class="layer-slick1 animated visible-false" data-appear="rollIn" data-delay="0">
@@ -265,7 +226,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="item-slick1" style="background-image: url(images/slide-03.jpg);">
+                <div class="item-slick1  section-slide-md section-slide-sm" style="background-image: url(images/slide-03.jpg);">
                     <div class="container h-full">
                         <div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
                             <div class="layer-slick1 animated visible-false" data-appear="rotateInDownLeft" data-delay="0">
@@ -580,13 +541,13 @@
                     <div class="block2" @click="selectProduct(index)" >
                         <div class="block2-pic hov-img0">
                             <img :src="'./upload/'+product.img_url[0]" alt="IMG-PRODUCT">
-                            <a   :href="'product-detail.html/' +product._id" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 ">
+                            <a @click="selectProduct(index)"  href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
                                 Quick View
                             </a>
                         </div>
                         <div class="block2-txt flex-w flex-t p-t-14">
                             <div class="block2-txt-child1 flex-col-l ">
-                                <a  :href="'product-detail.html/' +product._id" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                <a  href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                                     {{product.name}}
                                 </a>
                                 <span class="stext-105 cl3">
@@ -759,7 +720,7 @@
                                 <div class="slick3 gallery-lb">
                                     <div class="item-slick3" data-thumb="images/product-detail-01.jpg">
                                         <div class="wrap-pic-w pos-relative">
-                                            <img v-if="products.lenth" :src=products[indexViewProduct].img_url[0] alt="IMG-PRODUCT">
+                                            <img :src="'./upload/'+products[indexViewProduct].img_url[0]" alt="IMG-PRODUCT">
                                             <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-01.jpg">
                                                 <i class="fa fa-expand"></i>
                                             </a>
@@ -787,7 +748,7 @@
                     </div>
                     <div class="col-md-6 col-lg-5 p-b-30">
                         <div class="p-r-50 p-t-5 p-lr-0-lg">
-                            <!-- <h4 class="mtext-105 cl2 js-name-detail p-b-14">
+                            <h4 class="mtext-105 cl2 js-name-detail p-b-14">
                                 {{products[indexViewProduct].name}}
                             </h4>
                             <span class="mtext-106 cl2">
@@ -795,7 +756,7 @@
                             </span>
                             <p class="stext-102 cl3 p-t-23">
                                 Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat ornare feugiat.
-                            </p> -->
+                            </p>
 
                             <div class="p-t-33">
                                 <div class="flex-w flex-r-m p-b-10">
@@ -873,121 +834,8 @@
         </div>
     </div>
 </div>
-    <script src="/vendor/jquery/jquery-3.2.1.min.js" type="2a15d5e4d959cbecaa7b7afb-text/javascript"></script>
 
-    <script src="/vendor/animsition/js/animsition.min.js" type="2a15d5e4d959cbecaa7b7afb-text/javascript"></script>
 
-    <script src="/vendor/bootstrap/js/popper.js" type="2a15d5e4d959cbecaa7b7afb-text/javascript"></script>
-    <script src="/vendor/bootstrap/js/bootstrap.min.js" type="2a15d5e4d959cbecaa7b7afb-text/javascript"></script>
 
-    <script src="/vendor/select2/select2.min.js" type="2a15d5e4d959cbecaa7b7afb-text/javascript"></script>
-    <script type="2a15d5e4d959cbecaa7b7afb-text/javascript">
-        $(".js-select2").each(function() {
-            $(this).select2({
-                minimumResultsForSearch: 20,
-                dropdownParent: $(this).next('.dropDownSelect2')
-            });
-        })
-    </script>
 
-    <script src="/vendor/daterangepicker/moment.min.js" type="2a15d5e4d959cbecaa7b7afb-text/javascript"></script>
-    <script src="/vendor/daterangepicker/daterangepicker.js" type="2a15d5e4d959cbecaa7b7afb-text/javascript"></script>
-    <script src="/js/vue.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="/js-for-vue/main.js"></script>
-
-    <script src="/vendor/slick/slick.min.js" type="2a15d5e4d959cbecaa7b7afb-text/javascript"></script>
-    <script src="/js/slick-custom.js" type="2a15d5e4d959cbecaa7b7afb-text/javascript"></script>
-
-    <script src="/vendor/parallax100/parallax100.js" type="2a15d5e4d959cbecaa7b7afb-text/javascript"></script>
-    <script type="2a15d5e4d959cbecaa7b7afb-text/javascript">
-        $('.parallax100').parallax100();
-    </script>
-
-    <script src="/vendor/MagnificPopup/jquery.magnific-popup.min.js" type="2a15d5e4d959cbecaa7b7afb-text/javascript"></script>
-    <script type="2a15d5e4d959cbecaa7b7afb-text/javascript">
-        $('.gallery-lb').each(function() { // the containers for all your galleries
-            $(this).magnificPopup({
-                delegate: 'a', // the selector for gallery item
-                type: 'image',
-                gallery: {
-                    enabled: true
-                },
-                mainClass: 'mfp-fade'
-            });
-        });
-    </script>
-
-    <script src="/vendor/isotope/isotope.pkgd.min.js" type="2a15d5e4d959cbecaa7b7afb-text/javascript"></script>
-
-    <script src="/vendor/sweetalert/sweetalert.min.js" type="2a15d5e4d959cbecaa7b7afb-text/javascript"></script>
-    <script type="2a15d5e4d959cbecaa7b7afb-text/javascript">
-        $('.js-addwish-b2').on('click', function(e) {
-            e.preventDefault();
-        });
-
-        $('.js-addwish-b2').each(function() {
-            var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
-            $(this).on('click', function() {
-                swal(nameProduct, "is added to wishlist !", "success");
-
-                $(this).addClass('js-addedwish-b2');
-                $(this).off('click');
-            });
-        });
-
-        $('.js-addwish-detail').each(function() {
-            var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
-
-            $(this).on('click', function() {
-                swal(nameProduct, "is added to wishlist !", "success");
-
-                $(this).addClass('js-addedwish-detail');
-                $(this).off('click');
-            });
-        });
-
-        /*---------------------------------------------*/
-
-        $('.js-addcart-detail').each(function() {
-            var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
-            $(this).on('click', function() {
-                swal(nameProduct, "is added to cart !", "success");
-            });
-        });
-    </script>
-
-    <script src="/vendor/perfect-scrollbar/perfect-scrollbar.min.js" type="2a15d5e4d959cbecaa7b7afb-text/javascript"></script>
-    <script type="2a15d5e4d959cbecaa7b7afb-text/javascript">
-        $('.js-pscroll').each(function() {
-            $(this).css('position', 'relative');
-            $(this).css('overflow', 'hidden');
-            var ps = new PerfectScrollbar(this, {
-                wheelSpeed: 1,
-                scrollingThreshold: 1000,
-                wheelPropagation: false,
-            });
-
-            $(window).on('resize', function() {
-                ps.update();
-            })
-        });
-    </script>
-
-    <script src="/js/main.js" type="2a15d5e4d959cbecaa7b7afb-text/javascript"></script>
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13" type="2a15d5e4d959cbecaa7b7afb-text/javascript"></script>
-    <script type="2a15d5e4d959cbecaa7b7afb-text/javascript">
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'UA-23581568-13');
-    </script>
-    <script src="/js/rocket-loader.min.js" data-cf-settings="2a15d5e4d959cbecaa7b7afb-|49" defer=""></script>
-</body>
-
-</html>
+<% include ../layout/footer.ejs %> 
