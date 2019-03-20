@@ -2,27 +2,27 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/',async(req,res)=>{
-    res.render('site/page/index',{isHoverIndex: true});
+    res.render('site/page/index',{title: 'Home'});
 })
 
 router.get('/shop',async(req,res)=>{
-    res.render('site/page/shop',{isHoverShop: true});
+    res.render('site/page/shop',{title: 'Shop'});
 })
 
 router.get('/new-in',async(req,res)=>{
-    res.render('site/page/new-in',{isHoverNew: true});
+    res.render('site/page/new-in',{title: 'New-in'});
 })
 
 router.get('/blog',async(req,res)=>{
-    res.render('site/page/blog',{isHoverBlog: true});
+    res.render('site/page/blog',{title: 'Blog'});
 })
 
 router.get('/contact',async(req,res)=>{
-    res.render('site/page/contact',{isHoverContact: true});
+    res.render('site/page/contact',{title: 'Contact'});
 })
 
 router.get('/about',async(req,res)=>{
-    res.render('site/page/about',{isHoverAbout: true});
+    res.render('site/page/about',{title: 'About'});
 })
 
 

@@ -32,32 +32,32 @@
 
                     <div class="menu-desktop">
                         <ul class="main-menu">
-                            <li <% if (isHoverIndex) { %>
+                            <li <% if (title == 'Home') { %>
                                 class="active-menu"
                             <% } %> >
                                 <a href="/">Home</a>
                             </li>
-                            <li <% if (isHoverShop) { %>
+                            <li <% if (title == 'Shop') { %>
                                 class="active-menu"
                             <% } %> >
                                 <a href="shop">Shop</a>
                             </li>
-                            <li class="label1" data-label1="hot"<% if (isHoverNew) { %>
+                            <li class="label1" data-label1="hot"<% if (title == 'New-in') { %>
                                 class="active-menu"
-                            <% } %>>
+                            <% } %> >
                                 <a href="new-in">New in</a>
                             </li>
-                            <li<% if (isHoverBlog) { %>
+                            <li<% if (title == 'Blog') { %>
                                 class="active-menu"
                             <% } %>>
                                 <a href="blog">Blog</a>
                             </li>
-                            <li <% if (isHoverAbout) { %>
+                            <li <% if (title == 'About') { %>
                                 class="active-menu"
                             <% } %>>
                                 <a href="about">About</a>
                             </li>
-                            <li <% if (isHoverContact) { %>
+                            <li <% if (title =='Contact') { %>
                                 class="active-menu"
                             <% } %>>
                                 <a href="contact">Contact</a>
