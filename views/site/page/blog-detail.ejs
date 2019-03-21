@@ -41,11 +41,11 @@
                     <div class="header-cart-total w-full p-tb-40">
                         Total: ${{totalItem}}
                     </div>
-                    <div class="header-cart-buttons flex-w w-full ">
+                    <div class="header-cart-buttons flex-w w-full">
                         <!--<a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
                             View Cart
                         </a>-->
-                        <a href="shoping-cart.html" class="margin-auto flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
+                        <a href="shoping-cart.html" class=" margin-auto flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
                             Check Out
                         </a>
                     </div>
@@ -54,68 +54,106 @@
         </div>
     </div>
 
-    <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/bg-02.jpg');">
-        <h2 class="ltext-105 cl0 txt-center">
-            Blog
-        </h2>
-    </section>
+    <div class="container">
+        <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+            <a href="index.html" class="stext-109 cl8 hov-cl1 trans-04">
+                Home
+                <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+            </a>
+            <a href="blog.html" class="stext-109 cl8 hov-cl1 trans-04">
+                Blog
+                <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+            </a>
+            <span class="stext-109 cl4">
+                <%= aBlog.name %> 
+            </span>
+        </div>
+    </div>
 
-    <section class="bg0 p-t-62 p-b-60">
+    <section class="bg0 p-t-52 p-b-20">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-lg-9 p-b-80">
                     <div class="p-r-45 p-r-0-lg">
 
-                    <% listBlog.forEach(element => { %>
-                     <div class="p-b-63">
-                            <a href="/blog-detail/<%= element._id %> " class="hov-img0 how-pos5-parent">
-                                <img src="/upload/<%= element.img_url%>" alt="IMG-BLOG">
-                                <div class="flex-col-c-m size-123 bg9 how-pos5">
-                                    <span class="ltext-107 cl2 txt-center">
-                                        22
-                                    </span>
-                                    <span class="stext-109 cl3 txt-center">
-                                        Jan 2018
-                                    </span>
-                                </div>
-                            </a>
-                            <div class="p-t-32">
-                                <h4 class="p-b-15">
-                                    <a href="blog-detail.html" class="ltext-108 cl2 hov-cl1 trans-04">
-                                        <%= element.name %> 
-                                    </a>
-                                </h4>
-                                <p class="stext-117 cl6">
-                                    <%= element.summary %> 
-                                </p>
-                                <div class="flex-w flex-sb-m p-t-18">
-                                    <span class="flex-w flex-m stext-111 cl2 p-r-30 m-tb-10">
-                                        <span>
-                                            <span class="cl4">By</span> Admin
-                                            <span class="cl12 m-l-4 m-r-6">|</span>
-                                        </span>
-                                        <span>
-                                            <%= element.tag %> 
-                                            <span class="cl12 m-l-4 m-r-6">|</span>
-                                        </span>
-                                    </span>
-                                    <a href="blog-detail.html" class="stext-101 cl2 hov-cl1 trans-04 m-tb-10">
-                                        Continue Reading
-                                        <i class="fa fa-long-arrow-right m-l-9"></i>
-                                    </a>
-                                </div>
+                        <div class="wrap-pic-w how-pos5-parent">
+                            <img src="/upload/<%= aBlog.img_url%>" alt="IMG-BLOG">
+                            <div class="flex-col-c-m size-123 bg9 how-pos5">
+                                <span class="ltext-107 cl2 txt-center">
+                                    22
+                                </span>
+                                <span class="stext-109 cl3 txt-center">
+                                    Jan 2018
+                                </span>
                             </div>
                         </div>
-                    <% }) %>
-                        
+                        <div class="p-t-32">
+                            <span class="flex-w flex-m stext-111 cl2 p-b-19">
+                                <span>
+                                    <span class="cl4">By</span> Admin
+                                    <span class="cl12 m-l-4 m-r-6">|</span>
+                                </span>
+                                <span>
+                                    <%= aBlog.created %> 
+                                    <span class="cl12 m-l-4 m-r-6">|</span>
+                                </span>
+                                <span>
+                                    <%= aBlog.tag %> 
+                                    <span class="cl12 m-l-4 m-r-6">|</span>
+                                </span>
+                            </span>
+                            <h4 class="ltext-109 cl2 p-b-28">
+                                <%= aBlog.name %> 
+                            </h4>
+                            <p class="stext-117 cl6 p-b-26">
+                                <%= aBlog.summary %> 
+                            </p>
 
-                        <div class="flex-l-m flex-w w-full p-t-10 m-lr--7">
-                            <a href="#" class="flex-c-m how-pagination1 trans-04 m-all-7 active-pagination1">
-                                1
-                            </a>
-                            <a href="#" class="flex-c-m how-pagination1 trans-04 m-all-7">
-                                2
-                            </a>
+                            <div id="fetchDescription" style="display: none"> <%= aBlog.description %> </div>
+
+                            <p class="stext-117 cl6 p-b-26" id="str_description">
+                                
+                            </p>
+                        </div>
+                        
+                        <div class="flex-w flex-t p-t-16">
+                            <span class="size-216 stext-116 cl8 p-t-4">
+                                Tags
+                            </span>
+                            <div class="flex-w size-217">
+                                <a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
+                                    Streetstyle
+                                </a>
+                                <a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
+                                    Crafts
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="p-t-40">
+                            <h5 class="mtext-113 cl2 p-b-12">
+                                Leave a Comment
+                            </h5>
+                            <p class="stext-107 cl6 p-b-40">
+                                Your email address will not be published. Required fields are marked *
+                            </p>
+                            <form>
+                                <div class="bor19 m-b-20">
+                                    <textarea class="stext-111 cl2 plh3 size-124 p-lr-18 p-tb-15" name="cmt" placeholder="Comment..."></textarea>
+                                </div>
+                                <div class="bor19 size-218 m-b-20">
+                                    <input class="stext-111 cl2 plh3 size-116 p-lr-18" type="text" name="name" placeholder="Name *">
+                                </div>
+                                <div class="bor19 size-218 m-b-20">
+                                    <input class="stext-111 cl2 plh3 size-116 p-lr-18" type="text" name="email" placeholder="Email *">
+                                </div>
+                                <div class="bor19 size-218 m-b-30">
+                                    <input class="stext-111 cl2 plh3 size-116 p-lr-18" type="text" name="web" placeholder="Website">
+                                </div>
+                                <button class="flex-c-m stext-101 cl0 size-125 bg3 bor2 hov-btn3 p-lr-15 trans-04">
+                                    Post Comment
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -126,6 +164,38 @@
                             <button class="flex-c-m size-122 ab-t-r fs-18 cl4 hov-cl1 trans-04">
                                 <i class="zmdi zmdi-search"></i>
                             </button>
+                        </div>
+                        <div class="p-t-55">
+                            <h4 class="mtext-112 cl2 p-b-33">
+                                Categories
+                            </h4>
+                            <ul>
+                                <li class="bor18">
+                                    <a href="#" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
+                                        Fashion
+                                    </a>
+                                </li>
+                                <li class="bor18">
+                                    <a href="#" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
+                                        Beauty
+                                    </a>
+                                </li>
+                                <li class="bor18">
+                                    <a href="#" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
+                                        Street Style
+                                    </a>
+                                </li>
+                                <li class="bor18">
+                                    <a href="#" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
+                                        Life Style
+                                    </a>
+                                </li>
+                                <li class="bor18">
+                                    <a href="#" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
+                                        DIY & Crafts
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
                         <div class="p-t-65">
                             <h4 class="mtext-112 cl2 p-b-33">
@@ -401,7 +471,7 @@
                 </div>
                 <p class="stext-107 cl6 txt-center">
 
-                    Copyright &copy;<script type="d13a8c8530d7dfd405b54275-text/javascript">
+                    Copyright &copy;<script type="0756cd6712f99cc9a9cd719a-text/javascript">
                         document.write(new Date().getFullYear());
                     </script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com/" target="_blank">Colorlib</a>
 
@@ -417,7 +487,14 @@
     </div>
 </div>
 
+<script>
+var $log = $( "#str_description" );
+var str = $("fetchDescription").text();
+var html = $.parseHTML(str);
+    $log.append( html );
+// Append the parsed HTML
 
-
+ 
+</script>
 
 <% include ../layout/footer.ejs %> 

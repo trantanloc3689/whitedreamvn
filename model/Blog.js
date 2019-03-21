@@ -4,6 +4,7 @@ mongoose.Promise = global.Promise;
 
 var Blog = new Schema({
     name: String,
+    summary: String,
     description: String,
     img_url: String,
     tag: String,

@@ -11,12 +11,12 @@ function checkAdmin(req, res, next){
 }
 
 
-router.get('/', async (req, res, next)=>{
+router.get('/',checkAdmin, async (req, res, next)=>{
     let listCate = await Category.find({});
     res.render('admin/category/index',{listCate});
 });
 
-router.post('/', async (req, res, next)=>{
+router.post('/',checkAdmin, async (req, res, next)=>{
     try {
         let newCate = await Category.create({title:req.body.title});
         req.flash('success_msg',`Thêm mới thành công`);
@@ -28,12 +28,12 @@ router.post('/', async (req, res, next)=>{
 });
 
 // update category
-router.get('/update/:id',async (req,res,next)=>{
+router.get('/update/:id',checkAdmin,async (req,res,next)=>{
     let category = await Category.findOne({_id: req.params.id});
     res.render('admin/category/update',{category});
 });
 
-router.post('/update/:id',async (req,res,next)=>{
+router.post('/update/:id',checkAdmin,async (req,res,next)=>{
   try {
       console.log(req.body.title);
       let update = await Category.findOneAndUpdate({_id:req.params.id},{title: req.body.title});
@@ -46,7 +46,7 @@ router.post('/update/:id',async (req,res,next)=>{
   }
 });
 
-router.get('/delete/:id',async (req,res,next)=>{
+router.get('/delete/:id',checkAdmin,async (req,res,next)=>{
   try {
     await Category.findOneAndRemove({_id:req.params.id});
     req.flash('success_msg',`Xóa bài thành công`);

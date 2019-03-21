@@ -14,12 +14,12 @@ var storage = multer.diskStorage({
 
 var upload = multer({ storage: storage });
 
-router.get('/',async (req,res)=>{
+router.get('/',checkAdmin,async (req,res)=>{
     let listBlog = await Blog.find({});
     res.render('admin/blog/index',{listBlog})
 })
 
-router.post('/', upload.single('img_url'),async (req,res)=>{
+router.post('/', checkAdmin,upload.single('img_url'),async (req,res)=>{
     try {
         let newBlog = await Blog.create({
             name: req.body.name,
@@ -37,18 +37,19 @@ router.post('/', upload.single('img_url'),async (req,res)=>{
 })
 
 // update blog
-router.get('/update/:id',async (req,res,next)=>{
+router.get('/update/:id',checkAdmin,async (req,res,next)=>{
     let blog = await Blog.findOne({_id: req.params.id});
     console.log(blog);
     res.render('admin/blog/update',{blog})
 });
 
-router.post('/update/:id', upload.single('img_url'),async (req,res,next)=>{
+router.post('/update/:id',checkAdmin, upload.single('img_url'),async (req,res,next)=>{
   try {
       let blog = await Blog.findOne({_id: req.params.id}); 
       let path = "./public/upload/" + blog.img_url;
       let updateBlog = {
           name: req.body.name,
+          summary: req.body.summary,
           description: req.body.description,
           tag: req.body.tag,
           img_url: req.file.filename
@@ -67,7 +68,7 @@ router.post('/update/:id', upload.single('img_url'),async (req,res,next)=>{
   }
 });
 
-router.get('/delete/:id',async (req,res,next)=>{
+router.get('/delete/:id',checkAdmin,async (req,res,next)=>{
   try {
     await Blog.findOneAndRemove({_id:req.params.id});
     req.flash('success_msg',`Xóa bài thành công`);
@@ -77,5 +78,14 @@ router.get('/delete/:id',async (req,res,next)=>{
     res.redirect('/admin/blog');
   }
 });
+
+function checkAdmin(req, res, next){
+   
+  if(req.isAuthenticated()){
+    next();
+  }else{
+    res.redirect('/admin/dang-nhap');
+  }
+}
 
 module.exports = router;

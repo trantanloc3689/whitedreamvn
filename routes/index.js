@@ -14,8 +14,15 @@ router.get('/new-in',async(req,res)=>{
 })
 
 router.get('/blog',async(req,res)=>{
-    res.render('site/page/blog',{title: 'Blog'});
-})
+    let listBlog = await Blog.find({}).sort({created: -1});
+    res.render('site/page/blog',{title: 'Blog', listBlog});
+});
+
+router.get('/blog-detail/:id',async(req,res)=>{
+    let aBlog = await Blog.findOne({_id:req.params.id});
+    res.render('site/page/blog-detail',{title: 'Blog', aBlog});
+});
+
 
 router.get('/contact',async(req,res)=>{
     res.render('site/page/contact',{title: 'Contact'});

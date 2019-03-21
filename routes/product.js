@@ -25,13 +25,13 @@ function checkAdmin(req, res, next){
 }
 
 
-router.get('/', async (req, res, next)=>{
+router.get('/',checkAdmin, async (req, res, next)=>{
   let cate = await Category.find({});
   let listPro = await Product.find({});
   res.render('admin/product/index',{cate:cate, listPro})
 });
 
-router.post('/',upload.array('img_url_prod', 5), async (req, res, next)=>{
+router.post('/',checkAdmin,upload.array('img_url_prod', 5), async (req, res, next)=>{
   try {
     let length = req.files.length;
     let arrImg= [];
@@ -56,13 +56,13 @@ router.post('/',upload.array('img_url_prod', 5), async (req, res, next)=>{
 
 // update product
 
-router.get('/update/:id', async (req, res, next)=>{
+router.get('/update/:id', checkAdmin,async (req, res, next)=>{
   let cate = await Category.find({});
   let product = await Product.findOne({_id:req.params.id});
   res.render('admin/product/update',{cate:cate, product})
 });
 
-router.post('/update/:id',upload.array('img_url_prod', 5), async (req, res, next)=>{
+router.post('/update/:id',checkAdmin,upload.array('img_url_prod', 5), async (req, res, next)=>{
   try {
     let length = req.files.length;
     let arrImg= [];
@@ -89,7 +89,7 @@ router.post('/update/:id',upload.array('img_url_prod', 5), async (req, res, next
   }
 });
 
-router.get('/delete/:id',async (req,res,next)=>{
+router.get('/delete/:id',checkAdmin,async (req,res,next)=>{
   try {
     await Product.findOneAndRemove({_id:req.params.id});
     req.flash('success_msg',`Xóa bài thành công`);
