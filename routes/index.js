@@ -2,15 +2,25 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/',async(req,res)=>{
-    res.render('site/page/index',{title: 'Home'});
+    let listPro = await Product.find({}).sort({created: -1});
+    res.render('site/page/index',{title: 'Home', listPro });
+})
+
+
+router.get('/product-detail/:id',async(req,res)=>{
+    let aPro = await Product.findOne({_id:req.params.id}).sort({created: -1});
+    res.render('site/page/product-detail', {aPro});
+    // res.send(aPro.img_url[0])
 })
 
 router.get('/shop',async(req,res)=>{
-    res.render('site/page/shop',{title: 'Shop'});
+    let listPro = await Product.find({}).sort({created: -1});
+    res.render('site/page/shop',{title: 'Shop',listPro});
 })
 
 router.get('/new-in',async(req,res)=>{
-    res.render('site/page/new-in',{title: 'New-in'});
+    let listPro = await Product.find({}).sort({created: -1}).limit(12);
+    res.render('site/page/new-in',{title: 'New-in',listPro});
 })
 
 router.get('/blog',async(req,res)=>{
@@ -32,21 +42,10 @@ router.get('/about',async(req,res)=>{
     res.render('site/page/about',{title: 'About'});
 })
 
-
-router.get('/product-detail',async(req,res)=>{
-    res.render('site/page/product-detail');
-})
-
-
 router.get('/cart',async(req,res)=>{
     res.render('site/page/cart');
 })
 
-
-router.get('/api',async(req,res)=>{
-    let listPro = await Product.find({});
-    res.json(listPro);
-})
 
 
 module.exports = router;

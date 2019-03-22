@@ -38,14 +38,17 @@ router.post('/',checkAdmin,upload.array('img_url_prod', 5), async (req, res, nex
     for(i=0;i<length;i++){
       arrImg.push(req.files[i].filename);
     }
-    console.log(arrImg)
+
     let newPro = await Product.create({
       name: req.body.name,
       description: req.body.description,
       price: req.body.price,
       img_url: arrImg,
       category: req.body.category_id,
+      color: req.body.color.split('-'),
+      size: req.body.size.split('-'),
     });
+    console.log(newPro)
     req.flash('success_msg',`Thêm mới thành công`);
     res.redirect('/admin/product');
   } catch (error) {

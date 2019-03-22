@@ -17,6 +17,10 @@ var Product = new mongoose.Schema({
     category:{
         type: mongoose.Schema.Types.ObjectId,
         rel: 'Category'
+    },
+    created:{
+        type: Date,
+        default: Date.now
     }
 });
 

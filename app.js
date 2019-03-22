@@ -20,7 +20,6 @@ global.Order = require('./model/Order');
 
 
 var index = require('./routes/index');
-var api = require('./routes/api/api');
 var admin = require('./routes/admin');
 var product = require('./routes/product');
 var category = require('./routes/category');
@@ -88,7 +87,6 @@ app.use(function(req, res, next){
 });
 
 app.use('/', index);
-app.use('/api', api);
 app.use('/admin', admin);
 app.use('/admin/product', product);
 app.use('/admin/category', category);
