@@ -1,0 +1,102 @@
+        <% include ../layout/header.ejs %> 
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h3 class="page-header"> Danh sách Thông báo</h3>
+                </div>
+                <div class="col-lg-4">
+                    <h1 class="page-header">
+                        <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#modelId">
+                            Add
+                        </button>
+                    </h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <% if(success_msg != ''){ %> 
+                    <div class="alert alert-success"><%= success_msg%></div>
+                <% } %>
+                <% if(error_msg1='') { %>
+                    <div class="alert alert-danger"><%= error_msg %>  </div>
+                <% };%>
+                <!-- /.col-lg-6 -->
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>STT</th>
+                                            <th>Thông báo</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% let i=1; listNotifies.forEach(element => { %>
+                                            <tr>
+                                                <td><%= i %> </td>
+                                                <td><%= element.title %> </td>
+                                                <td>
+                                                    <a class="btn btn-primary btn-xs" href="/admin/notifi/update/<%= element._id %>" role="button">Update</a>
+                                                    <a class="btn btn-danger btn-xs" href="/admin/notifi/delete/<%= element._id %>" role="button">Delete</a>
+                                                </td>
+                                            </tr>
+                                        <% i++; }) %>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-6 -->
+            </div>
+        </div>
+        <!-- /#page-wrapper -->
+        <!-- Button trigger modal -->
+        
+        <!-- Modal -->
+        <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                           </button>
+                            <h5 class="modal-title"> Thêm thông báo</h5>
+                        </div>
+                    <form method="POST">
+                        <div class="modal-body">
+                            <div class="container-fluid">
+                                <div class="form-group">
+                                    <label>Nôi dung: </label>
+                                    <input type="text" class="form-control" name="title">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button class="btn btn-primary"> Add</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            $('#exampleModal').on('show.bs.modal', event => {
+                var button = $(event.relatedTarget);
+                var modal = $(this);
+                // Use above variables to manipulate the DOM
+                
+            });
+        </script>
+
+        <% include ../layout/footer.ejs %> 

@@ -17,6 +17,7 @@ global.Product = require('./model/Product');
 global.Category = require('./model/Category');
 global.Blog = require('./model/Blog');
 global.Order = require('./model/Order');
+global.Notifies = require('./model/Notifies');
 
 
 var index = require('./routes/index');
@@ -25,19 +26,11 @@ var product = require('./routes/product');
 var category = require('./routes/category');
 var blog = require('./routes/blog');
 var order = require('./routes/order');
+var notifi = require('./routes/notifies');
 
 var expressValidator = require('express-validator');
 var flash = require('connect-flash');
 var app = express();
-
-var cors = require('cors');
-
-var corsOptions = {
-  origin: 'http://localhost:3000',
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-}
-
-app.use(cors(corsOptions));
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -92,6 +85,7 @@ app.use('/admin/product', product);
 app.use('/admin/category', category);
 app.use('/admin/blog', blog);
 app.use('/admin/order', order);
+app.use('/admin/notifi', notifi);
 
 
 // catch 404 and forward to error handler

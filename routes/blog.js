@@ -25,7 +25,8 @@ router.post('/', checkAdmin,upload.single('img_url'),async (req,res)=>{
             name: req.body.name,
             description: req.body.description,
             tag: req.body.tag,
-            img_url: req.file.filename
+            img_url: req.file.filename,
+            summary: req.body.summary
         });
         
         req.flash('success_msg',`Thêm mới thành công`);

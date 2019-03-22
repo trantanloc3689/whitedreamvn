@@ -2,10 +2,6 @@ function shoppingCartIndex(){
     fetchTotalProductInCart();
     totalPriceAllProduct();
 
-    
-    // var btnAddCart = document.getElementsByClassName('flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail')[0];
-    // btnAddCart.addEventListener('click',addCart);
-
     var btnShowCart = document.getElementsByClassName('icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart')[0];
     btnShowCart.addEventListener('click', showCart);
 }
@@ -14,7 +10,6 @@ function shoppingCartDetail(){
     fetchTotalProductInCart();
     totalPriceAllProduct();
 
-    
     var btnAddCart = document.getElementsByClassName('flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail')[0];
     btnAddCart.addEventListener('click',addCart);
 
@@ -78,7 +73,7 @@ function addCart(event){
 
 function showCart(){
     var products =  JSON.parse(localStorage.getItem('cart'));
-    // document.getElementsByClassName('mtext-106 cl2')[0].textContent.trim().slice(1)
+    document.getElementsByClassName('mtext-106 cl2')[0].textContent.trim().slice(1)
     for(var i=0; i<products.length; i++){
         addElementCart(products[i]);
         var btnDeleteOne = document.getElementsByClassName('deleteElement')[i];
