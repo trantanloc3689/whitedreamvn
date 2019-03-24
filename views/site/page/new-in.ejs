@@ -31,7 +31,7 @@
                             <li>
                                 <a href="/shop">Shop</a>
                             </li>
-                            <li class="label1" data-label1="hot" class="active-menu">
+                            <li class="label1 active-menu" data-label1="hot" >
                                 <a href="/new-in">New in</a>
                             </li>
                             <li>
@@ -101,8 +101,8 @@
                 <li>
                     <a href="/shop">Shop</a>
                 </li>
-                <li class="active-menu">
-                    <a href="/new-in" class="label1 rs1" data-label1="hot">New in</a>
+                <li >
+                    <a href="/new-in" class="label1 rs1" data-label1="hot" >New in</a>
                 </li>
                 <li>
                     <a href="/blog">Blog</a>
@@ -135,9 +135,9 @@
 	<% include ../layout/cart.ejs %> 
 	
 	<!-- Product -->
-	<div class="bg0 m-t-23 p-b-140">
-		<div class="container">
-			<div class="flex-w flex-sb-m p-b-52">
+	<div class="bg0 m-t-50 p-b-140">
+		<div class="container ">
+			<!-- <div class="flex-w flex-sb-m p-b-52">
 				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
 						All Products
@@ -172,7 +172,7 @@
 					</div>
 				</div>
 				
-				<!-- Search product -->
+				 Search product 
 				<div class="dis-none panel-search w-full p-t-10 p-b-15">
 					<div class="bor8 dis-flex p-l-15">
 						<button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
@@ -183,8 +183,8 @@
 					</div>	
 				</div>
 
-				<!-- Filter -->
-			</div>
+				 Filter
+			</div> -->
 
 			<div class="row isotope-grid">
             <% listPro.forEach(element => { %>
@@ -207,7 +207,7 @@
 								</a>
 
 								<span class="stext-105 cl3">
-									<%= element.price %> 
+									<%= element.price.toString().slice(0,3) + ".000" %> 
 								</span>
 							</div>
 
