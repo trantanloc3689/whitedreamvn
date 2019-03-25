@@ -177,6 +177,10 @@
                                             <%= element.tag %> 
                                             <span class="cl12 m-l-4 m-r-6">|</span>
                                         </span>
+                                        <span>
+                                            <%= element.created.getDate() + '/' + element.created.getMonth() + '/' + element.created.getFullYear() %> 
+                                            <span class="cl12 m-l-4 m-r-6">|</span>
+                                        </span>
                                     </span>
                                     <a href="/blog/<%= element.name_slug %> " class="stext-101 cl2 hov-cl1 trans-04 m-tb-10">
                                         Continue Reading
