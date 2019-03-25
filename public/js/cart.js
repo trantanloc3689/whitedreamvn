@@ -4,6 +4,10 @@ function shoppingCartIndex(){
 
     var btnShowCart = document.getElementsByClassName('icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart')[0];
     btnShowCart.addEventListener('click', showCart);
+
+    var btnDeleteCart = document.getElementsByClassName('fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart')[0];
+    btnDeleteCart.addEventListener('click',deleteAllElementCart)
+
 }
 
 function shoppingCartDetail(){
@@ -15,29 +19,6 @@ function shoppingCartDetail(){
 
     var btnShowCart = document.getElementsByClassName('icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart')[0];
     btnShowCart.addEventListener('click', showCart);
-}
-
-
-function loadCart(){
-
-    var btnShowCart = document.getElementsByClassName('icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart')[0];
-    btnShowCart.addEventListener('click', showCart);
-
-    var hidenCart = document.getElementsByClassName('fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart')[0];
-    hidenCart.addEventListener('click',displayCart);
-    var products = JSON.parse(localStorage.getItem('cart')) || [];
-    for(i=0;i<products.length;i++){
-        addListCartToCheckOut(products[i]);
-
-        var btnReduce = document.getElementsByClassName('fs-16 zmdi zmdi-minus')[i];
-        btnReduce.addEventListener('click',reduceNum);
-
-
-        var btnIncrease = document.getElementsByClassName('fs-16 zmdi zmdi-plus')[i];
-        btnIncrease.addEventListener('click',increaseNum);
-
-    }
-    totalProcductOnChange();
 }
 
 
@@ -56,7 +37,7 @@ function addCart(event){
     };
     var product = {
         name: document.getElementsByClassName('mtext-105 cl2 js-name-detail p-b-14')[0].innerHTML,
-        price: document.getElementsByClassName('mtext-106 cl2')[0].textContent.trim().slice(1),
+        price: document.getElementsByClassName('mtext-106 cl2')[0].textContent.trim().slice(0,7),
         img_url: document.getElementsByClassName('wrap-pic-w pos-relative')[0].children[0].src,
         qty: document.getElementsByClassName('mtext-104 cl3 txt-center num-product')[0].value,
         size: document.getElementsByClassName('js-select2')[0].value,
@@ -73,7 +54,7 @@ function addCart(event){
 
 function showCart(){
     var products =  JSON.parse(localStorage.getItem('cart'));
-    document.getElementsByClassName('mtext-106 cl2')[0].textContent.trim().slice(1)
+    // document.getElementsByClassName('mtext-106 cl2')[0].textContent.trim().slice(1)
     for(var i=0; i<products.length; i++){
         addElementCart(products[i]);
         var btnDeleteOne = document.getElementsByClassName('deleteElement')[i];
@@ -110,7 +91,7 @@ function addElementCart(product){
             </a>
 
             <span class="header-cart-item-info">
-                ${product.qty} X ${product.price} | <button type="button" class="btn btn-danger btn-xs deleteElement"> X</button>
+                ${product.qty} X ${product.price} VNĐ | <button type="button" class="btn btn-danger btn-xs deleteElement">X</button>
             </span>
             
         </div>`;
@@ -120,7 +101,7 @@ function deleteAllElementCart(){
     var ul = document.getElementsByClassName('header-cart-wrapitem w-full')[0];
     while(ul.hasChildNodes){
         ul.children[0].remove();
-    }    
+    }  
 }
 
 function deleteOneElementCart(event){
@@ -135,11 +116,37 @@ function totalPriceAllProduct(){
             total+=products[i].qty*products[i].price;
         }
     }
-    document.getElementsByClassName('header-cart-total w-full p-tb-40')[0].innerHTML = 'Total:  ' + total + ' VND';
+    document.getElementsByClassName('header-cart-total w-full p-tb-40')[0].innerHTML = 'Total:  ' + total + '.000 VND';
 }
 
 
 // xử lí trang checkout
+
+
+function loadCart(){
+
+    var btnShowCart = document.getElementsByClassName('icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart')[0];
+    btnShowCart.addEventListener('click', showCart);
+
+    var hidenCart = document.getElementsByClassName('fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart')[0];
+    hidenCart.addEventListener('click',displayCart);
+    
+    var products = JSON.parse(localStorage.getItem('cart')) || [];
+    for(i=0;i<products.length;i++){
+        addListCartToCheckOut(products[i]);
+
+        var btnReduce = document.getElementsByClassName('fs-16 zmdi zmdi-minus')[i];
+        btnReduce.addEventListener('click',reduceNum);
+
+        var btnIncrease = document.getElementsByClassName('fs-16 zmdi zmdi-plus')[i];
+        btnIncrease.addEventListener('click',increaseNum);
+
+        var btnDeleteRow = document.getElementsByClassName('deleteElement')[i];
+        btnDeleteRow.addEventListener('click',deleteElementRowCart)
+    }
+}
+
+
 
 function addListCartToCheckOut(product){
     var table = document.getElementsByClassName('table-shopping-cart')[0];
@@ -153,7 +160,7 @@ function addListCartToCheckOut(product){
             </div>
         </td>
         <td class="column-2">${product.name}</td>
-        <td class="column-3">${product.price}</td>
+        <td class="column-3">${product.price} VNĐ</td>
         <td class="column-4">
             <div class="wrap-num-product flex-w m-l-auto m-r-0">
                 <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
@@ -167,31 +174,33 @@ function addListCartToCheckOut(product){
                 </div>
             </div>
         </td>
-        <td class="column-5"> ${product.qty*product.price}</td>
-    `
+        <td class="column-5"> ${product.qty*product.price}.000 VNĐ</td>
+        <td class="column-6" style="width: 172px;padding-right: 50px;text-align: right;"> <button type="button" class="btn btn-danger btn-xs deleteElement">X</button></td>
+    `;
+    totalProcductOnChange();
 }
 
 function increaseNum(event){
     var qty = event.target.parentElement.parentElement.children[1].value ++;
-    var price = event.target.parentElement.parentElement.parentElement.parentElement.children[2].textContent;
-    event.target.parentElement.parentElement.parentElement.parentElement.children[4].innerHTML = (qty+1)*price ;
+    var price = parseInt(event.target.parentElement.parentElement.parentElement.parentElement.children[2].textContent.slice(0,3));
+    event.target.parentElement.parentElement.parentElement.parentElement.children[4].innerHTML = (qty+1)*price + ".000 VNĐ" ;
     AddAllCart();
 }
 
 function reduceNum(event){
     var qty = event.target.parentElement.parentElement.children[1].value --;
-    var price = event.target.parentElement.parentElement.parentElement.parentElement.children[2].textContent;
-    event.target.parentElement.parentElement.parentElement.parentElement.children[4].innerHTML = (qty-1)*price ;
+    var price = parseInt(event.target.parentElement.parentElement.parentElement.parentElement.children[2].textContent.slice(0,3));
+    event.target.parentElement.parentElement.parentElement.parentElement.children[4].innerHTML = (qty-1)*price +".000 VNĐ" ;
     AddAllCart();
 }
 
 function AddAllCart(){
     var cart = [];
-    var products = JSON.parse(localStorage.getItem('cart')) || [];
+    var products = document.getElementsByClassName('table_row');
     for(i=1;i<products.length+1;i++){
         var product = {
             name: document.getElementsByClassName('column-2')[i].innerHTML,
-            price: document.getElementsByClassName('column-3')[i].textContent,
+            price: document.getElementsByClassName('column-3')[i].textContent.slice(0,3),
             img_url: document.getElementsByClassName('how-itemcart1')[i-1].children[0].src,
             qty: document.getElementsByClassName('mtext-104 cl3 txt-center num-product')[i-1].value,
             // size: document.getElementsByClassName('js-select2')[0].value,
@@ -216,5 +225,10 @@ function totalProcductOnChange(){
             total+=products[i].total;
         }
     }
-    document.getElementsByClassName('mtext-110 cl2')[1].innerHTML = total + 'VND'
+    document.getElementsByClassName('mtext-110 cl2')[1].innerHTML = total + '.000 VND'
+}
+
+function deleteElementRowCart(event){
+    event.target.parentElement.parentElement.remove();
+    AddAllCart();
 }
