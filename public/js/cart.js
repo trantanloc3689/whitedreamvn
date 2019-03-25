@@ -36,7 +36,7 @@ function addCart(event){
         var cart = [];
     };
     var product = {
-        name: document.getElementsByClassName('mtext-105 cl2 js-name-detail p-b-14')[0].innerHTML,
+        name: document.getElementsByClassName('mtext-105 cl2 js-name-detail p-b-14')[0].innerHTML.trim(),
         price: document.getElementsByClassName('mtext-106 cl2')[0].textContent.trim().slice(0,7),
         img_url: document.getElementsByClassName('wrap-pic-w pos-relative')[0].children[0].src,
         qty: document.getElementsByClassName('mtext-104 cl3 txt-center num-product')[0].value,
@@ -132,7 +132,7 @@ function loadCart(){
     hidenCart.addEventListener('click',displayCart);
     
     var products = JSON.parse(localStorage.getItem('cart')) || [];
-    for(i=0;i<products.length;i++){
+    for(var i=0;i<products.length;i++){
         addListCartToCheckOut(products[i]);
 
         var btnReduce = document.getElementsByClassName('fs-16 zmdi zmdi-minus')[i];
@@ -142,7 +142,7 @@ function loadCart(){
         btnIncrease.addEventListener('click',increaseNum);
 
         var btnDeleteRow = document.getElementsByClassName('deleteElement')[i];
-        btnDeleteRow.addEventListener('click',deleteElementRowCart)
+        btnDeleteRow.addEventListener('click',deleteElementRowCart);
     }
 }
 
@@ -218,7 +218,7 @@ function AddAllCart(){
 }
 
 function totalProcductOnChange(){
-    var products = JSON.parse(localStorage.getItem('cart')) || [];
+    var products = JSON.parse(localStorage.getItem('cart')) || 0;
     var total = 0;
     if(products.length != 0){
         for(i=0;i<products.length;i++){

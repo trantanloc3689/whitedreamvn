@@ -55,6 +55,17 @@ router.get('/cart',async(req,res)=>{
     res.render('site/page/cart');
 })
 
-
+router.post('/cart',async(req,res)=>{
+    try {
+        let dataOrder = req.body;
+        dataOrder.status = 0;
+        let newOrder = await Order.create(dataOrder);
+        req.flash('success_msg',`Thêm mới thành công`);
+        res.redirect('/cart');
+    } catch (error) {
+        req.flash('error_msg','Thêm mới thất bại');
+        res.redirect('/cart');
+    }
+})
 
 module.exports = router;

@@ -7,10 +7,17 @@ var Order = new Schema({
     phone_number: String,
     address: String,
     products: [{
-        type: String
+        name: String,
+        price: Number,
+        img_url: String,
+        qty: Number,
+        total: Number
     }],
-    total_price: Number,
-    status: Number, // 0 - đang chờ duyêt, 1 - đã duyệt
+    total_price: String,
+    status: {
+        type: Number,
+        default: 0
+    }, // 0 - đang chờ duyêt, 1 - đã duyệt
 },{collection : 'orders'});
 
 module.exports = mongoose.model('orders', Order);
