@@ -18,7 +18,7 @@
                 <nav class="limiter-menu-desktop container">
 
                     <a href="/" class="logo">
-                        <img src="/images/icons/logowd.png" alt="IMG-LOGO">
+                        <img src="/images/icons/logowd.png" alt="logo whitedream">
                     </a>
 
                     <div class="menu-desktop">
@@ -62,7 +62,7 @@
         <div class="wrap-header-mobile">
 
             <div class="logo-mobile">
-                <a href="/"><img src="/images/icons/logowd.png" alt="IMG-LOGO"></a>
+                <a href="/"><img src="/images/icons/logowd.png" alt="logo whitedream"></a>
             </div>
 
             <div class="wrap-icon-header flex-w flex-r-m m-r-15">
@@ -88,7 +88,7 @@
             <ul class="topbar-mobile">
                 <li>
                     <div class="left-top-bar">
-                        Free shipping for standard order over $100
+                        <%= notifies[0].title %> 
                     </div>
                 </li>
             </ul>
@@ -135,12 +135,12 @@
 	<!-- breadcrumb -->
 	<div class="container">
 		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
-			<a href="index.html" class="stext-109 cl8 hov-cl1 trans-04">
+			<a href="/" class="stext-109 cl8 hov-cl1 trans-04">
 				Home
 				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
 			</a>
 
-			<a href="product.html" class="stext-109 cl8 hov-cl1 trans-04">
+			<a href="/shop" class="stext-109 cl8 hov-cl1 trans-04">
 				Men
 				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
 			</a>
@@ -165,7 +165,7 @@
 							<div class="slick3 gallery-lb">
 								<div class="item-slick3" data-thumb="/upload/<%= aPro.img_url[0] %>">
 									<div class="wrap-pic-w pos-relative">
-										<img src="/upload/<%= aPro.img_url[0] %>" alt="IMG-PRODUCT">
+										<img src="/upload/<%= aPro.img_url[0] %>" alt="<%= aPro.name %>">
                                         
 										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="/upload/<%= aPro.img_url[0] %>">
 											<i class="fa fa-expand"></i>
@@ -175,7 +175,7 @@
 
 								<div class="item-slick3" data-thumb="/upload/<%= aPro.img_url[1] %>">
 									<div class="wrap-pic-w pos-relative">
-										<img src="/upload/<%= aPro.img_url[1] %>" alt="IMG-PRODUCT">
+										<img src="/upload/<%= aPro.img_url[1] %>" alt="<%= aPro.name %>">
 
 										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="/upload/<%= aPro.img_url[1] %>">
 											<i class="fa fa-expand"></i>
@@ -185,7 +185,7 @@
 
 								<div class="item-slick3" data-thumb="/upload/<%= aPro.img_url[2] %>">
 									<div class="wrap-pic-w pos-relative">
-										<img src="/upload/<%= aPro.img_url[2] %>" alt="IMG-PRODUCT">
+										<img src="/upload/<%= aPro.img_url[2] %>" alt="<%= aPro.name %>">
 
 										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="/upload/<%= aPro.img_url[2] %>">
 											<i class="fa fa-expand"></i>
