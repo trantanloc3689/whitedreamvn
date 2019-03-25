@@ -89,7 +89,7 @@
             <ul class="topbar-mobile">
                 <li>
                     <div class="left-top-bar">
-                        Free shipping for standard order over $100
+                        <%= notifies[0].title %>
                     </div>
                 </li>
             </ul>
@@ -158,10 +158,10 @@
                             <img src="/upload/<%= aBlog.img_url%>" alt="IMG-BLOG">
                             <div class="flex-col-c-m size-123 bg9 how-pos5">
                                 <span class="ltext-107 cl2 txt-center">
-                                    22
+                                    <%= aBlog.created.getDate() %>
                                 </span>
                                 <span class="stext-109 cl3 txt-center">
-                                    Jan 2018
+                                    <%= ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][aBlog.created.getMonth()] +" "+ aBlog.created.getFullYear() %>
                                 </span>
                             </div>
                         </div>
@@ -172,7 +172,7 @@
                                     <span class="cl12 m-l-4 m-r-6">|</span>
                                 </span>
                                 <span>
-                                    <%= aBlog.created %> 
+                                    <%= aBlog.created.getDate() + " " + ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][aBlog.created.getMonth()] +", "+ aBlog.created.getFullYear() %> 
                                     <span class="cl12 m-l-4 m-r-6">|</span>
                                 </span>
                                 <span>
