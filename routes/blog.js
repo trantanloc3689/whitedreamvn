@@ -23,6 +23,7 @@ router.post('/', checkAdmin,upload.single('img_url'),async (req,res)=>{
     try {
         let newBlog = await Blog.create({
             name: req.body.name,
+            name_slug: bodauTiengViet(req.body.name),
             description: req.body.description,
             tag: req.body.tag,
             img_url: req.file.filename,
@@ -50,6 +51,7 @@ router.post('/update/:id',checkAdmin, upload.single('img_url'),async (req,res,ne
       let path = "./public/upload/" + blog.img_url;
       let updateBlog = {
           name: req.body.name,
+          name_slug: bodauTiengViet(req.body.name),
           summary: req.body.summary,
           description: req.body.description,
           tag: req.body.tag,
@@ -88,5 +90,20 @@ function checkAdmin(req, res, next){
     res.redirect('/admin/dang-nhap');
   }
 }
+
+function bodauTiengViet(str) {
+  str = str.toLowerCase();
+  str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
+  str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
+  str = str.replace(/ì|í|ị|ỉ|ĩ/g, "i");
+  str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o");
+  str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u");
+  str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y");
+  str = str.replace(/đ/g, "d");
+  str = str.replace(/ /g, "-");
+  str = str.replace(/\./g, "-");
+  return str;
+}
+
 
 module.exports = router;

@@ -41,6 +41,7 @@ router.post('/',checkAdmin,upload.array('img_url_prod', 5), async (req, res, nex
 
     let newPro = await Product.create({
       name: req.body.name,
+      name_slug: bodauTiengViet(req.body.name),
       description: req.body.description,
       price: req.body.price,
       img_url: arrImg,
@@ -48,7 +49,6 @@ router.post('/',checkAdmin,upload.array('img_url_prod', 5), async (req, res, nex
       color: req.body.color.split('-'),
       size: req.body.size.split('-'),
     });
-    console.log(newPro)
     req.flash('success_msg',`Thêm mới thành công`);
     res.redirect('/admin/product');
   } catch (error) {
@@ -74,6 +74,7 @@ router.post('/update/:id',checkAdmin,upload.array('img_url_prod', 5), async (req
     };
     let updatePro = {
       name: req.body.name,
+      name_slug: bodauTiengViet(req.body.name),
       description: req.body.description,
       price: req.body.price,
       img_url: arrImg,
@@ -102,5 +103,20 @@ router.get('/delete/:id',checkAdmin,async (req,res,next)=>{
     res.redirect('/admin/product');
   }
 });
+
+function bodauTiengViet(str) {
+  str = str.toLowerCase();
+  str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
+  str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
+  str = str.replace(/ì|í|ị|ỉ|ĩ/g, "i");
+  str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o");
+  str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u");
+  str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y");
+  str = str.replace(/đ/g, "d");
+  str = str.replace(/ /g, "-");
+  str = str.replace(/\./g, "-");
+  return str;
+}
+
 
 module.exports = router;

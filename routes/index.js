@@ -9,10 +9,10 @@ router.get('/',async(req,res)=>{
 })
 
 
-router.get('/product-detail/:id',async(req,res)=>{
+router.get('/product/:name',async(req,res)=>{
     let notifies = await Notifies.find({});
-    let aPro = await Product.findOne({_id:req.params.id}).sort({created: -1});
-    res.render('site/page/product-detail', {aPro , notifies});
+    let aPro = await Product.findOne({name_slug:req.params.name}).sort({created: -1});
+    res.render('site/page/product-detail', {aPro , notifies, title:aPro.name});
     // res.send(aPro.img_url[0])
 })
 
@@ -34,10 +34,10 @@ router.get('/blog',async(req,res)=>{
     res.render('site/page/blog',{title: 'Blog', listBlog, notifies});
 });
 
-router.get('/blog-detail/:id',async(req,res)=>{
+router.get('/blog/:name',async(req,res)=>{
     let notifies = await Notifies.find({});
-    let aBlog = await Blog.findOne({_id:req.params.id});
-    res.render('site/page/blog-detail',{title: 'Blog', aBlog, notifies});
+    let aBlog = await Blog.findOne({name_slug:req.params.name});
+    res.render('site/page/blog-detail',{title: aBlog.name, aBlog, notifies});
 });
 
 

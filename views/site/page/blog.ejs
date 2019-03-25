@@ -89,7 +89,7 @@
             <ul class="topbar-mobile">
                 <li>
                     <div class="left-top-bar">
-                        Free shipping for standard order over $100
+                        <%= notifies[0].title %> 
                     </div>
                 </li>
             </ul>
@@ -147,7 +147,7 @@
 
                     <% listBlog.forEach(element => { %>
                      <div class="p-b-63">
-                            <a href="/blog-detail/<%= element._id %> " class="hov-img0 how-pos5-parent">
+                            <a href="/blog/<%= element.name_slug %> " class="hov-img0 how-pos5-parent">
                                 <img src="/upload/<%= element.img_url%>" alt="IMG-BLOG">
                                 <div class="flex-col-c-m size-123 bg9 how-pos5">
                                     <span class="ltext-107 cl2 txt-center">
@@ -160,7 +160,7 @@
                             </a>
                             <div class="p-t-32">
                                 <h4 class="p-b-15">
-                                    <a href="/blog-detail/<%= element._id %> " class="ltext-108 cl2 hov-cl1 trans-04">
+                                    <a href="/blog/<%= element.name_slug %> " class="ltext-108 cl2 hov-cl1 trans-04">
                                         <%= element.name %> 
                                     </a>
                                 </h4>
@@ -178,7 +178,7 @@
                                             <span class="cl12 m-l-4 m-r-6">|</span>
                                         </span>
                                     </span>
-                                    <a href="/blog-detail/<%= element._id %> " class="stext-101 cl2 hov-cl1 trans-04 m-tb-10">
+                                    <a href="/blog/<%= element.name_slug %> " class="stext-101 cl2 hov-cl1 trans-04 m-tb-10">
                                         Continue Reading
                                         <i class="fa fa-long-arrow-right m-l-9"></i>
                                     </a>
