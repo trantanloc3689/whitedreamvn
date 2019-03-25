@@ -151,10 +151,10 @@
                                 <img src="/upload/<%= element.img_url%>" alt="<%= element.name%>">
                                 <div class="flex-col-c-m size-123 bg9 how-pos5">
                                     <span class="ltext-107 cl2 txt-center">
-                                        22
+                                        <%= element.created.getDate() %>
                                     </span>
                                     <span class="stext-109 cl3 txt-center">
-                                        Jan 2018
+                                        <%= ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][element.created.getMonth()] +" "+ element.created.getFullYear() %>
                                     </span>
                                 </div>
                             </a>
