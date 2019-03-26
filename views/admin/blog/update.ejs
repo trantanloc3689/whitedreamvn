@@ -1,5 +1,4 @@
 <% include ../layout/header.ejs %> 
-<script src="https://cdn.ckeditor.com/ckeditor5/12.0.0/classic/ckeditor.js"></script>
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-8">
@@ -55,12 +54,9 @@
 </div>
 <!-- /#page-wrapper -->
 <!-- Button trigger modal -->
+<script src="../../../js/ckeditor/ckeditor.js"></script>
 <script>
-        ClassicEditor
-        .create( document.querySelector( '#description' ) )
-        .catch( error => {
-            console.error( error );
-        } );
+    CKEDITOR.replace( 'description' );
 </script>
 
 

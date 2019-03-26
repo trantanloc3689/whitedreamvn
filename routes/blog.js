@@ -48,7 +48,7 @@ router.get('/update/:id',checkAdmin,async (req,res,next)=>{
 router.post('/update/:id',checkAdmin, upload.single('img_url'),async (req,res,next)=>{
   try {
       let blog = await Blog.findOne({_id: req.params.id}); 
-      let path = "./upload/" + blog.img_url;
+      let path = "/upload/" + blog.img_url;
       let updateBlog = {
           name: req.body.name,
           name_slug: bodauTiengViet(req.body.name),
@@ -60,7 +60,6 @@ router.post('/update/:id',checkAdmin, upload.single('img_url'),async (req,res,ne
       Blog.findByIdAndUpdate({_id:req.params.id},updateBlog,(err,data)=>{
         if(err)
           throw err;
-        fs.unlinkSync(path);
         req.flash('success_msg',`Thêm mới thành công`);
         res.redirect('/admin/blog');
       });
