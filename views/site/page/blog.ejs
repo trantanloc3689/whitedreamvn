@@ -134,9 +134,9 @@
     <% include ../layout/cart.ejs %> 
 
     <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/bg-02.jpg');">
-        <h2 class="ltext-105 cl0 txt-center">
+        <h1 class="ltext-105 cl0 txt-center">
             Blog
-        </h2>
+        </h1>
     </section>
 
     <section class="bg0 p-t-62 p-b-60">
@@ -153,17 +153,17 @@
                                     <span class="ltext-107 cl2 txt-center">
                                         <%= element.created.getDate() %>
                                     </span>
-                                    <span class="stext-109 cl3 txt-center">
+                                    <h3 class="stext-109 cl3 txt-center">
                                         <%= ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][element.created.getMonth()] +" "+ element.created.getFullYear() %>
-                                    </span>
+                                    </h3>
                                 </div>
                             </a>
                             <div class="p-t-32">
-                                <h4 class="p-b-15">
+                                <h2 class="p-b-15">
                                     <a href="/blog/<%= element.name_slug %> " class="ltext-108 cl2 hov-cl1 trans-04">
                                         <%= element.name %> 
                                     </a>
-                                </h4>
+                                </h2>
                                 <p class="stext-117 cl6">
                                     <%= element.summary %> 
                                 </p>

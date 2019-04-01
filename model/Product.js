@@ -17,7 +17,7 @@ var Product = new mongoose.Schema({
     }],
     category:{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Category'
+        ref: 'categories'
     },
     created:{
         type: Date,

@@ -18,8 +18,10 @@ router.get('/product/:name',async(req,res)=>{
 
 router.get('/shop',async(req,res)=>{
     let notifies = await Notifies.find({});
-    let listPro = await Product.find({}).sort({created: -1});
-    res.render('site/page/shop',{title: 'Shop',listPro, notifies});
+    let listPro = await Product.find({}).sort({created: -1}).populate('categories');
+    let listCate = await Category.find({});
+    res.render('site/page/shop',{title: 'Shop',listPro, notifies,listCate});
+    // res.json(listPro)
 })
 
 router.get('/new-in',async(req,res)=>{
