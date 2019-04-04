@@ -49,6 +49,7 @@ router.post('/update/:id',async (req,res,next)=>{
 router.get('/delete/:id',checkAdmin,async (req,res,next)=>{
   try {
     await Category.findOneAndRemove({_id:req.params.id});
+    await Product.deleteMany({category: req.params.id});
     req.flash('success_msg',`Xóa bài thành công`);
     res.redirect('/admin/category');
   } catch (error) {
