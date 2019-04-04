@@ -11,6 +11,7 @@ var Order = new Schema({
         price: Number,
         img_url: String,
         qty: Number,
+        color: String,
         total: Number
     }],
     total_price: String,
@@ -18,6 +19,10 @@ var Order = new Schema({
         type: Number,
         default: 0
     }, // 0 - đang chờ duyêt, 1 - đã duyệt
+    created: {
+        type: Date,
+        default: Date.now()
+    },
 },{collection : 'orders'});
 
 module.exports = mongoose.model('orders', Order);

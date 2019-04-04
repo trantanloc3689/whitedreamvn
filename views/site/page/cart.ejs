@@ -2,7 +2,7 @@
 
 
 
-<body class="animsition" onload="loadCart()">
+<body class="" onload="loadCart()">
 	
 	<!-- Header -->
 	<% include ../layout/menu.ejs %> 
@@ -154,7 +154,7 @@
 			address: document.getElementsByName('address')[0].value,
 			phone_number: document.getElementsByName('phoneNumber')[0].value,
 			products: JSON.parse(localStorage.getItem('cart')),
-			total_price: document.getElementsByClassName('mtext-110 cl2')[0].innerText
+			total_price: document.getElementsByClassName('mtext-110 cl2')[1].innerText
 		};
         xhr.send(JSON.stringify(j));
 		alert("Đơn hàng đã được gửi!")	

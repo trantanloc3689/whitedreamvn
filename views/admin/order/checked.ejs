@@ -35,11 +35,76 @@
                                     <th> Địa Chỉ</th>
                                     <th> Tổng giá tiền</th>
                                     <th> Trạng thái</th>
-                                    <th>Action</th>
+                                    <th> Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                
+                                <% let i=1; listOrder.forEach(element => { %>
+                                            <tr>
+                                                <td><%= i %> </td>
+                                                <td>
+                                                    <%= element.username %>  
+                                                </td>
+                                                <td><%= element.phone_number %> </td>
+                                                <td><%= element.address %> </td>
+                                                <td><%= element.total_price %> </td>
+                                                <td>
+                                                    <% if (element.status == 1) { %>
+                                                        <a class="btn btn-primary btn-xs" href="/admin/order/tocheck/<%= element._id %>" role="button">Đã duyệt</a>
+                                                    <% } else { %>
+                                                        <a class="btn btn-default btn-xs" href="/admin/order/tochecked/<%= element._id %>" role="button">Chưa duyệt</a>
+                                                    <% } %>
+                                                </td>
+                                                <td>
+                                                    <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#modelId<%= i %> "> Xem</button>
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="modelId<%= i %>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                            <h5 class="modal-title"><%= element.username %></h5>
+                                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                    <span aria-hidden="true">&times;</span>
+                                                                                </button>
+                                                                        </div>
+                                                                <div class="modal-body">
+                                                                    <div class="container-fluid">
+                                                                        <table class="table table-sm table-responsive">
+                                                                            <thead class="thead-inverse">
+                                                                                <tr>
+                                                                                    <th>STT</th>
+                                                                                    <th>Tên sản phẩm</th>
+                                                                                    <th>Số lượng</th>
+                                                                                    <th>Màu sắc</th>
+                                                                                    <th>Giá tiền</th>
+                                                                                    <th>Thành tiền</th>
+                                                                                </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    <% let k=1; element.products.forEach(item => { %>
+                                                                                        <tr>
+                                                                                            <td><%= k %> </td>
+                                                                                            <td><%= item.name %> </td>
+                                                                                            <td><%= item.qty %> </td>
+                                                                                            <td><%= item.color %></td>
+                                                                                            <td><%= item.price %></td>
+                                                                                            <td><%= item.total %></td>
+                                                                                        </tr>
+                                                                                    <% k++; }) %>
+                                                                                </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                    <button type="button" class="btn btn-primary">Save</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        <% i++; }) %>
                             </tbody>
                         </table>
                     </div>
@@ -55,5 +120,12 @@
 <!-- /#page-wrapper -->
 <!-- Button trigger modal -->
 
-
+<script>
+    $('#exampleModal').on('show.bs.modal', event => {
+        var button = $(event.relatedTarget);
+        var modal = $(this);
+        // Use above variables to manipulate the DOM
+        
+    });
+</script>
 <% include ../layout/footer.ejs %> 

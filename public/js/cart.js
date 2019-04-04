@@ -35,14 +35,16 @@ function addCart(event){
     } else {
         var cart = [];
     };
+    let n_qty = document.getElementsByClassName('mtext-104 cl3 txt-center num-product')[0].value;
+    let n_price = document.getElementsByClassName('mtext-106 cl2')[0].textContent.trim().slice(0,7);
     var product = {
         name: document.getElementsByClassName('mtext-105 cl2 js-name-detail p-b-14')[0].innerHTML.trim(),
-        price: document.getElementsByClassName('mtext-106 cl2')[0].textContent.trim().slice(0,7),
+        price: n_price,
         img_url: document.getElementsByClassName('wrap-pic-w pos-relative')[0].children[0].src,
-        qty: document.getElementsByClassName('mtext-104 cl3 txt-center num-product')[0].value,
+        qty: n_qty,
         size: document.getElementsByClassName('js-select2')[0].value,
         color: document.getElementsByClassName('js-select2')[1].value,
-        total:  0
+        total:  n_qty*n_price
     };
 
     cart.push(product);
@@ -124,7 +126,7 @@ function totalPriceAllProduct(){
 
 
 function loadCart(){
-
+    totalProcductOnChange();
     var btnShowCart = document.getElementsByClassName('icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart')[0];
     btnShowCart.addEventListener('click', showCart);
 
@@ -149,6 +151,7 @@ function loadCart(){
 
 
 function addListCartToCheckOut(product){
+    totalProcductOnChange();
     var table = document.getElementsByClassName('table-shopping-cart')[0];
     var tr = document.createElement('tr');
     table.appendChild(tr);
@@ -177,7 +180,7 @@ function addListCartToCheckOut(product){
         <td class="column-5"> ${product.qty*product.price}.000 VNĐ</td>
         <td class="column-6" style="width: 172px;padding-right: 50px;text-align: right;"> <button type="button" class="btn btn-danger btn-xs deleteElement">X</button></td>
     `;
-    totalProcductOnChange();
+    
 }
 
 function increaseNum(event){
