@@ -11,8 +11,9 @@ router.get('/',async(req,res)=>{
 
 router.get('/product/:name',async(req,res)=>{
     let notifies = await Notifies.find({});
-    let aPro = await Product.findOne({name_slug:req.params.name}).sort({created: -1});
-    res.render('site/page/product-detail', {aPro , notifies, title:aPro.name});
+    let aPro = await Product.findOne({name_slug:req.params.name});
+    let nameCate = await Category.findOne({_id: aPro.category});
+    res.render('site/page/product-detail', {aPro , notifies, title:aPro.name, nameCate});
     // res.send(aPro.img_url[0])
 })
 

@@ -93,7 +93,7 @@ function addElementCart(product){
             </a>
 
             <span class="header-cart-item-info">
-                ${product.qty} X ${product.price} VNĐ | <button type="button" class="btn btn-danger btn-xs deleteElement">X</button>
+                ${product.qty} X ${product.price} VND | <button type="button" class="btn btn-danger btn-xs deleteElement"><img src ="../../public/images/icons/icon-close2.png"></button>
             </span>
             
         </div>`;

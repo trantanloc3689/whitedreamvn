@@ -33,10 +33,10 @@ router.get('/update/:id',checkAdmin,async (req,res,next)=>{
     res.render('admin/category/update',{category});
 });
 
-router.post('/update/:id',checkAdmin,async (req,res,next)=>{
+router.post('/update/:id',async (req,res,next)=>{
   try {
       console.log(req.body.title);
-      let update = await Category.findOneAndUpdate({_id:req.params.id},{title: req.body.title});
+      let update = await Category.update({_id:req.params.id},{$set: {title: req.body.title}});
       req.flash('success_msg',`Cập nhập thành công`);
       res.redirect('/admin/category');
       
@@ -49,6 +49,7 @@ router.post('/update/:id',checkAdmin,async (req,res,next)=>{
 router.get('/delete/:id',checkAdmin,async (req,res,next)=>{
   try {
     await Category.findOneAndRemove({_id:req.params.id});
+    await Product.deleteMany({category: req.params.id});
     req.flash('success_msg',`Xóa bài thành công`);
     res.redirect('/admin/category');
   } catch (error) {
