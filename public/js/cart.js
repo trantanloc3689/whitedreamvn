@@ -93,7 +93,7 @@ function addElementCart(product){
             </a>
 
             <span class="header-cart-item-info">
-                ${product.qty} X ${product.price} VND | <button type="button" class="btn btn-danger btn-xs deleteElement"><img src ="../../public/images/icons/icon-close2.png"></button>
+                ${product.qty} X ${product.price} VND | <button type="button" class="btn btn-danger btn-xs deleteElement" style ="padding: 3px 8px; font-size: 15px; margin-left:2px">X</button>
             </span>
             
         </div>`;
@@ -163,7 +163,7 @@ function addListCartToCheckOut(product){
             </div>
         </td>
         <td class="column-2">${product.name}</td>
-        <td class="column-3">${product.price} VNĐ</td>
+        <td class="column-3">${product.price}.000 VND</td>
         <td class="column-4">
             <div class="wrap-num-product flex-w m-l-auto m-r-0">
                 <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
@@ -177,8 +177,8 @@ function addListCartToCheckOut(product){
                 </div>
             </div>
         </td>
-        <td class="column-5"> ${product.qty*product.price}.000 VNĐ</td>
-        <td class="column-6" style="width: 172px;padding-right: 50px;text-align: right;"> <button type="button" class="btn btn-danger btn-xs deleteElement">X</button></td>
+        <td class="column-5"> ${product.qty*product.price}.000 VND</td>
+        <td class="column-6" style="width: 172px;padding-right: 60px;text-align: right;"> <button type="button" class="btn btn-danger btn-xs deleteElement" style="padding:3.2px 7.2px; font-size:15px">X</button></td>
     `;
     
 }
@@ -186,14 +186,14 @@ function addListCartToCheckOut(product){
 function increaseNum(event){
     var qty = event.target.parentElement.parentElement.children[1].value ++;
     var price = parseInt(event.target.parentElement.parentElement.parentElement.parentElement.children[2].textContent.slice(0,3));
-    event.target.parentElement.parentElement.parentElement.parentElement.children[4].innerHTML = (qty+1)*price + ".000 VNĐ" ;
+    event.target.parentElement.parentElement.parentElement.parentElement.children[4].innerHTML = (qty+1)*price + ".000 VND" ;
     AddAllCart();
 }
 
 function reduceNum(event){
     var qty = event.target.parentElement.parentElement.children[1].value --;
     var price = parseInt(event.target.parentElement.parentElement.parentElement.parentElement.children[2].textContent.slice(0,3));
-    event.target.parentElement.parentElement.parentElement.parentElement.children[4].innerHTML = (qty-1)*price +".000 VNĐ" ;
+    event.target.parentElement.parentElement.parentElement.parentElement.children[4].innerHTML = (qty-1)*price +".000 VND" ;
     AddAllCart();
 }
 

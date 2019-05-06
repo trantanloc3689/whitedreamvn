@@ -1,4 +1,58 @@
-<% include ../layout/header.ejs %> 
+<!DOCTYPE html>
+<html lang="en">
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+
+<head>
+    <title> WhiteDream | Quần áo nam nữ | Quần áo nam nữ đẹp tại tphcm</title>
+    <meta charset="UTF-8">
+
+    <meta name="keywords" content="Quần áo rẻ đẹp whitedreamvn ở TPHCM, Quần áo rẻ đẹp, quan ao re dep, shop ban ao gia re">
+
+    <meta name="description" content="Quần áo rẻ đẹp whitedreamvn tại TPHCM cung cấp nhiều loại quan ao re dep, ao thun cho nhiều đối tượng nam nữ lớn bé với nhiều loại mẫu thích hợp, thời trang, hiện đại">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" type="image/png" href="/images/icons/favicon.png" />
+
+    <link rel="stylesheet"  type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" type="text/css" href="/fonts/iconic/css/material-design-iconic-font.min.css">
+
+    <link rel="stylesheet" type="text/css" href="/fonts/linearicons-v1.0.0/icon-font.min.css">
+
+    <link rel="stylesheet" type="text/css" href="/vendor/animate/animate.css">
+
+    <link rel="stylesheet" type="text/css" href="/vendor/css-hamburgers/hamburgers.min.css">
+
+    <link rel="stylesheet" type="text/css" href="/vendor/animsition/css/animsition.min.css">
+
+    <link rel="stylesheet" type="text/css" href="/vendor/select2/select2.min.css">
+
+    <link rel="stylesheet" type="text/css" href="/vendor/daterangepicker/daterangepicker.css">
+
+    <link rel="stylesheet" type="text/css" href="/vendor/slick/slick.css">
+
+    <link rel="stylesheet" type="text/css" href="/vendor/MagnificPopup/magnific-popup.css">
+
+    <link rel="stylesheet" type="text/css" href="/vendor/perfect-scrollbar/perfect-scrollbar.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+
+    <script src="/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-136936674-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-136936674-1');
+    </script>
+
+</head>
 
 
 
@@ -54,7 +108,7 @@
 
 							</table>
 						</div>
-
+						<!--
 						<div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
 							<div class="flex-w flex-m m-r-20 m-tb-5">
 								<input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="coupon" placeholder="Coupon Code">
@@ -68,6 +122,7 @@
 								Update Cart
 							</div>
 						</div>
+						-->
 					</div>
 				</div>
 
@@ -89,7 +144,7 @@
 
 								<div class="size-209">
 									<span class="mtext-110 cl2">
-										0 VNĐ
+										0 VND
 									</span>
 								</div>
 							</div>
@@ -97,22 +152,22 @@
 							<div class="flex-w flex-t bor12 p-t-15 p-b-30">
 								<div class="size-208 w-full-ssm">
 									<span class="stext-110 cl2">
-										Thông tin giao hàng:
+										Shipping:
 									</span>
 								</div>
 
 								<div class="size-209 p-r-18 p-r-0-sm w-full-ssm">
+									<p class= "stext-111 cl6 p-t-2">Please double check your address, or contact us if you need any help.</p>
 									<div class="p-t-15">
-										
 										<div class="bor8 bg0 m-b-12">
-											<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="name" placeholder="Nhập họ tên của bạn...">
+											<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="name" placeholder="Your name...">
 										</div>
 
 										<div class="bor8 bg0 m-b-12">
-											<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="phoneNumber" placeholder="Nhập số điện thoại...">
+											<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="phoneNumber" placeholder="Your phone...">
 										</div>
 										<div class="bor8 bg0 m-b-22">
-											<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="address" placeholder="Nhập địa chỉ giao hàng...">
+											<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="address" placeholder="Your address...">
 										</div>
 											
 									</div>
@@ -134,7 +189,7 @@
 							</div>
 
 							<button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" type="button" onclick="submitOrder()">
-								Mua hàng
+								PROCEED TO CHECKOUT
 							</button>
 						</form>
 					</div>
@@ -146,18 +201,23 @@
 	
 <script type="text/javascript">
     function submitOrder(){
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "http://localhost:3000/cart", true);
-        xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-        var j = {
-			username: document.getElementsByName('name')[0].value,
-			address: document.getElementsByName('address')[0].value,
-			phone_number: document.getElementsByName('phoneNumber')[0].value,
-			products: JSON.parse(localStorage.getItem('cart')),
-			total_price: document.getElementsByClassName('mtext-110 cl2')[1].innerText
-		};
-        xhr.send(JSON.stringify(j));
-		alert("Đơn hàng đã được gửi!")	
+		if(JSON.parse(localStorage.getItem('cart'))!= null){
+			var xhr = new XMLHttpRequest();
+			xhr.open("POST", "http://whitedreamvn.com//cart", true);
+			xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+			var j = {
+				username: document.getElementsByName('name')[0].value,
+				address: document.getElementsByName('address')[0].value,
+				phone_number: document.getElementsByName('phoneNumber')[0].value,
+				products: JSON.parse(localStorage.getItem('cart')),
+				total_price: document.getElementsByClassName('mtext-110 cl2')[1].innerText
+			};
+			xhr.send(JSON.stringify(j));
+			alert("Đơn hàng đã được gửi!");
+			localStorage.removeItem("cart");
+		} else{
+			alert("Danh sách sản phẩm không để trống!");
+		}
 	}
 </script>	
 

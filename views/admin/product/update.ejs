@@ -13,21 +13,38 @@
                 <!-- /.panel-heading -->
                 <div class="panel-body">
                     <form role="form" method="POST" enctype="multipart/form-data">
-                        <div class="modal-body">
+                        <div class="body">
                             <div class="container-fluid">
                                 <div class="form-group">
                                     <label>Tên sản phẩm: </label>
                                     <input type="text" class="form-control" name="name" value="<%= product.name %>">  
                                 </div>
                                 <div class="form-group">
+                                    <label>Meta Title: </label>
+                                    <input type="text" class="form-control" name="title" value="<%= product.title %> ">
+                                </div>
+                                <div class="form-group">
+                                    <label>Meta description: </label>
+                                    <textarea class="form-control" id="" name="meta_description" rows="3"><%= product.meta_description %> </textarea>
+                                </div>
+                                <div class="form-group">
                                     <label for="description"> Mô tả: </label>
-                                    <textarea class="form-control" id="description" name="description" rows="3" value="<%= product.description %>"></textarea>
+                                    <textarea class="form-control" id="description" name="description" rows="3" value="<%= product.description %>"><%= product.description %></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="price"> Nhập giá: </label>
-                                    <input type="number" class="form-control" name="price" value="<%= product.price %>">
+                                    <input type="number" class="form-control" name="price" id="price" value="<%= product.price %>">
                                 </div>
-                                <select class="form-control" name="description">
+                                <div class="form-group">
+                                    <label for="size">Nhập size:  </label>
+                                    <input type="text" class="form-control" name="size" id="size" value="<%= product.size%>" placeholder="Nhập theo dạng XX - XL - M...">
+                                </div>
+                                <div class="form-group">
+                                    <label for="color">Nhập Màu sắc:  </label>
+                                    <input type="text" class="form-control" name="color" id="color" value="<%= product.color%>" placeholder="Nhập theo dạng red - black - blue...">
+                                </div>
+                                <label for="category_id" >Chuyên mục:  </label>
+                                <select class="form-control" name="category_id">
                                     <option>Chuyên mục</option>
                                     <% cate.forEach(element => { %>
                                         <option value="<%= element._id %>"><%= element.title %> </option>
@@ -42,8 +59,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <div class="footer">
+                            
                             <button class="btn btn-primary"> Cập Nhập</button>
                         </div>
                     </form>

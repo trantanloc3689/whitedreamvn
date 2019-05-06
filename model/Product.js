@@ -2,6 +2,8 @@ var mongoose = require('mongoose');
 
 var Product = new mongoose.Schema({
     name: String,
+    title: String,
+    meta_description: String,
     name_slug: String,
     description: String,
     // rate: Number,

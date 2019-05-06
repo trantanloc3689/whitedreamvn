@@ -41,6 +41,8 @@ router.post('/',checkAdmin,upload.array('img_url_prod', 5), async (req, res, nex
 
     let newPro = await Product.create({
       name: req.body.name,
+      title: req.body.title || "",
+      meta_description: req.body.meta_description || "",
       name_slug: bodauTiengViet(req.body.name),
       description: req.body.description,
       price: req.body.price,
@@ -74,6 +76,8 @@ router.post('/update/:id',checkAdmin,upload.array('img_url_prod', 5), async (req
     };
     let updatePro = {
       name: req.body.name,
+      title: req.body.title || "",
+      meta_description: req.body.meta_description || "",
       name_slug: bodauTiengViet(req.body.name),
       description: req.body.description,
       price: req.body.price,

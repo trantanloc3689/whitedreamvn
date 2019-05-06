@@ -23,6 +23,8 @@ router.post('/', checkAdmin,upload.single('img_url'),async (req,res)=>{
     try {
         let newBlog = await Blog.create({
             name: req.body.name,
+            title: req.body.title || "",
+            meta_description: req.body.meta_description || "",
             name_slug: bodauTiengViet(req.body.name),
             description: req.body.description,
             tag: req.body.tag,
@@ -51,6 +53,8 @@ router.post('/update/:id',checkAdmin, upload.single('img_url'),async (req,res,ne
       // let path = "/upload/" + blog.img_url;
       let updateBlog = {
           name: req.body.name,
+          title: req.body.title || "",
+          meta_description: req.body.meta_description || "",
           name_slug: bodauTiengViet(req.body.name),
           summary: req.body.summary,
           description: req.body.description,

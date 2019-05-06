@@ -13,8 +13,8 @@ router.get('/product/:name',async(req,res)=>{
     let notifies = await Notifies.find({});
     let aPro = await Product.findOne({name_slug:req.params.name});
     let nameCate = await Category.findOne({_id: aPro.category});
-    res.render('site/page/product-detail', {aPro , notifies, title:aPro.name, nameCate});
-    // res.send(aPro.img_url[0])
+    res.render('site/page/product-detail', {aPro , notifies,  nameCate});
+    // res.send(nameCate)
 })
 
 router.get('/shop',async(req,res)=>{
@@ -25,10 +25,10 @@ router.get('/shop',async(req,res)=>{
     // res.json(listPro)
 })
 
-router.get('/new-in',async(req,res)=>{
+router.get('/features',async(req,res)=>{
     let notifies = await Notifies.find({});
     let listPro = await Product.find({}).sort({created: -1}).limit(12);
-    res.render('site/page/new-in',{title: 'New-in',listPro, notifies});
+    res.render('site/page/features',{title: 'Features',listPro, notifies});
 })
 
 router.get('/blog',async(req,res)=>{
@@ -62,6 +62,7 @@ router.post('/cart',async(req,res)=>{
     try {
         let dataOrder = req.body;
         dataOrder.status = 0;
+        console.log(req.body);
         let newOrder = await Order.create(dataOrder);
         req.flash('success_msg',`Thêm mới thành công`);
         res.redirect('/cart');
