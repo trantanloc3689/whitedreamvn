@@ -9,7 +9,7 @@ var storage = multer.diskStorage({
     cb(null, './public/upload')
   },
   filename: function (req, file, cb) {
-    cb(null, Date.now() + '_' + file.originalname);
+    cb(null, file.originalname);
   }
 });
 
@@ -83,6 +83,8 @@ router.post('/update/:id',checkAdmin,upload.array('img_url_prod', 5), async (req
       price: req.body.price,
       img_url: arrImg,
       category: req.body.category_id,
+      color: req.body.color.split('-'),
+      size: req.body.size.split('-'),
     };
     let pro = await Product.findOne({_id: req.params.id});
     var path = "./public/upload/" + pro.img_url;

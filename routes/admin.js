@@ -12,9 +12,9 @@ router.get('/', checkAdmin, function(req, res, next) {
 
 router.post('/dang-ki',(req, res, next)=>{
   var newUser = new User({
-    fullname: 'Tran Tan Loc',
+    fullname: 'Admin',
     email: 'admin@gmail.com',
-    password: bcrypt.hashSync('locdeptrai', bcrypt.genSaltSync(10))
+    password: bcrypt.hashSync('admin', bcrypt.genSaltSync(10))
   });
   newUser.save().then((data)=> res.json(data));
 });
