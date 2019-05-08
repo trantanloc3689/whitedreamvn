@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="vi">
-<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 
 <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <title>WhiteDream | Quần Áo Nam Nữ | Shop Quần Áo Thời Trang Nam Nữ Đẹp Giá Rẻ</title>
     <meta charset="UTF-8">
 
@@ -63,6 +63,7 @@
 </head>
 
 
+
 <body class="animsition" onload="shoppingCartIndex()">
 	
         <!-- Header -->
@@ -93,7 +94,7 @@
                                 <a href="/shop">Shop</a>
                             </li>
                             <li class="label1 active-menu" data-label1="hot" >
-                                <a href="/features">Features</a>
+                                <a href="/new-in">New in</a>
                             </li>
                             <li>
                                 <a href="/blog">Blog</a>
@@ -163,7 +164,7 @@
                     <a href="/shop">Shop</a>
                 </li>
                 <li >
-                    <a href="/features" class="label1 rs1" data-label1="hot" >Features</a>
+                    <a href="/new-in" class="label1 rs1" data-label1="hot" >New in</a>
                 </li>
                 <li>
                     <a href="/blog">Blog</a>
@@ -198,7 +199,12 @@
 	<!-- Product -->
 	<div class="bg0 m-t-50 p-b-140">
 		<div class="container ">
-
+            <div class="p-b-20">
+				<h1 class="ltext-103 cl5">
+					FAVORITE
+				</h1>
+				<hr>
+			</div>
 			<div class="row isotope-grid">
             <% listPro.forEach(element => { %>
 
@@ -216,7 +222,7 @@
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
 								<a href="/product/<%= element.name_slug %> " class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-									<%= element.name %> 
+									<h2 style="font-size:15px"> <%= element.name %> </h2>
 								</a>
 
 								<span class="stext-105 cl3">

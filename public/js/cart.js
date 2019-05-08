@@ -163,7 +163,7 @@ function addListCartToCheckOut(product){
             </div>
         </td>
         <td class="column-2">${product.name}</td>
-        <td class="column-3">${product.price}.000 VND</td>
+        <td class="column-3">${product.price} VND</td>
         <td class="column-4">
             <div class="wrap-num-product flex-w m-l-auto m-r-0">
                 <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
